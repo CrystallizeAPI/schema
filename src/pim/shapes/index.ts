@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ItemTypeEnum, KeyValuePairInputSchema } from '../../shared/index.js';
+import { ItemTypeSchema, KeyValuePairInputSchema } from '../../shared/index.js';
 import { ComponentDefinitionInputSchema, ComponentDefinitionSchema } from '../components/component-definition.js';
 
 export const CreatePieceInputSchema = z.object({
@@ -16,7 +16,7 @@ export const UpdateShapeInputSchema = CreatePieceInputSchema.extend({
 });
 
 export const CreateShapeInputSchema = UpdateShapeInputSchema.extend({
-    type: ItemTypeEnum,
+    type: ItemTypeSchema,
 });
 
 export const PieceSchema = z.object({
@@ -26,7 +26,7 @@ export const PieceSchema = z.object({
 });
 
 export const ShapeSchema = PieceSchema.extend({
-    type: ItemTypeEnum,
+    type: ItemTypeSchema,
     variantComponents: z.array(ComponentDefinitionSchema).optional(),
 });
 

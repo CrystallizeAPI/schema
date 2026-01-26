@@ -6,8 +6,8 @@ on:
 name: Release a New Version
 
 permissions:
-  id-token: write  # Required for OIDC
-  contents: read
+    id-token: write # Required for OIDC
+    contents: write
 
 jobs:
     releaseandpublish:
@@ -43,4 +43,3 @@ jobs:
 
             - name: 📢 Publish to NPM
               run: yarn publish --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
-
